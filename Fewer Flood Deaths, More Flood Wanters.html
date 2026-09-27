@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Fewer Flood Deaths, More Flood Wanters</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,700&family=Libre+Franklin:wght@400;500;600;700&display=swap" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.0/chart.umd.min.js"></script>
+<style>
+:root{
+  --ink:#10222E; --ink-soft:#1B3A4B; --slate:#3B5A66;
+  --fog:#E9EEF0; --paper:#F5F7F6; --line:#C9D3D6;
+  --amber:#C97B2E; --amber-deep:#9C5E20;
+  --serif:'Fraunces',Georgia,'Times New Roman',serif;
+  --sans:'Libre Franklin',-apple-system,'Segoe UI',Arial,sans-serif;
+  color-scheme: light;
+  padding-top:env(safe-area-inset-top,0px);
+  padding-bottom:env(safe-area-inset-bottom,0px);
+}
+*{box-sizing:border-box;}
+html{scroll-padding-top:env(safe-area-inset-top,0px);}
+body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--sans);font-size:17px;line-height:1.6;}
+.wrap{max-width:920px;margin:0 auto;padding:0 24px;}
+h1,h2,h3{font-family:var(--serif);font-weight:600;line-height:1.08;margin:0;color:var(--ink);}
+p{max-width:66ch;}
+a{color:var(--amber-deep);}
+
+/* HERO */
+.hero{background:var(--ink);color:var(--fog);position:relative;overflow:hidden;padding:64px 0 56px;}
+.hero svg.contours{position:absolute;inset:0;width:100%;height:100%;opacity:.18;}
+.hero .wrap{position:relative;}
+.kicker{font-size:.95rem;color:var(--amber);font-weight:600;margin-bottom:14px;}
+.hero h1{font-size:clamp(2.1rem,5vw,3.4rem);color:#fff;max-width:15ch;}
+.hero .deck{margin-top:20px;font-size:1.15rem;color:#C7D4D9;max-width:56ch;}
+.stat-row{display:flex;gap:36px;margin-top:44px;flex-wrap:wrap;}
+.stat{border-top:2px solid var(--amber);padding-top:10px;min-width:140px;}
+.stat .num{font-family:var(--serif);font-size:2.3rem;color:#fff;font-weight:600;}
+.stat .lbl{font-size:.9rem;color:#9FB2B9;margin-top:2px;}
+
+section{padding:56px 0;border-bottom:1px solid var(--line);}
+section:last-of-type{border-bottom:none;}
+.section-head{max-width:60ch;margin-bottom:28px;}
+.section-head h2{font-size:1.7rem;}
+.section-head .num-label{color:var(--amber-deep);font-weight:600;font-size:.95rem;margin-bottom:8px;display:block;}
+
+.chart-panels{display:grid;grid-template-columns:1fr 1fr;gap:28px;margin-top:8px;}
+@media(max-width:720px){.chart-panels{grid-template-columns:1fr;}}
+.panel{background:#fff;border:1px solid var(--line);border-radius:2px;padding:20px 18px 8px;}
+.panel h3{font-size:1rem;font-family:var(--sans);font-weight:600;margin-bottom:4px;}
+.panel .note{font-size:.85rem;color:var(--slate);margin-bottom:12px;}
+.panel canvas{max-height:260px;}
+
+.callout{background:var(--fog);border-left:3px solid var(--amber);padding:18px 22px;margin:22px 0;max-width:62ch;}
+.callout p{margin:0;font-size:.98rem;}
+
+.migration-diagram{background:#fff;border:1px solid var(--line);padding:26px 24px;margin-top:8px;}
+.mig-row{display:flex;align-items:center;gap:16px;margin:14px 0;}
+.mig-track{flex:1;height:10px;background:var(--fog);border-radius:5px;position:relative;overflow:hidden;}
+.mig-fill{height:100%;background:var(--amber);border-radius:5px;}
+.mig-label{width:200px;font-size:.9rem;color:var(--ink-soft);font-weight:500;}
+.mig-caption{font-size:.85rem;color:var(--slate);margin-top:16px;}
+
+.two-col{display:grid;grid-template-columns:1.3fr 1fr;gap:36px;}
+@media(max-width:720px){.two-col{grid-template-columns:1fr;}}
+.two-col aside{background:var(--ink-soft);color:#DCE7EA;padding:22px;font-size:.92rem;align-self:start;}
+.two-col aside h3{color:#fff;font-family:var(--sans);font-size:.95rem;margin-bottom:10px;}
+
+.holdon{background:var(--ink);color:var(--fog);}
+.holdon .section-head .num-label{color:var(--amber);}
+.holdon h2{color:#fff;}
+.holdon p{color:#C7D4D9;}
+
+footer{background:var(--fog);padding:40px 0 60px;}
+footer .wrap{font-size:.88rem;color:var(--slate);}
+footer h3{font-size:.95rem;font-family:var(--sans);color:var(--ink);margin-bottom:10px;}
+footer ul{padding-left:18px;margin:0 0 18px;}
+footer li{margin-bottom:4px;}
+.byline{margin-top:24px;padding-top:18px;border-top:1px solid var(--line);}
+</style>
+</head>
+<body>
+
+<div class="hero">
+<svg class="contours" viewBox="0 0 900 400" preserveAspectRatio="none" aria-hidden="true">
+<path d="M0,320 C150,300 250,340 400,310 C550,280 650,330 900,300" stroke="#4F7C82" stroke-width="1.5" fill="none"/>
+<path d="M0,350 C150,335 260,365 420,340 C560,318 680,355 900,330" stroke="#4F7C82" stroke-width="1.5" fill="none"/>
+<path d="M0,380 C160,365 280,390 430,368 C570,348 690,378 900,360" stroke="#4F7C82" stroke-width="1.5" fill="none"/>
+</svg>
+<div class="wrap">
+  <div class="kicker">Homework 4 · Storm Damages &amp; Adaptation</div>
+  <h1>Fewer flood deaths. More flood wanters.</h1>
+  <p class="deck">Flood deaths per capita in the US have fallen more than 60% since the 1940s. Over the same stretch, Americans have been moving into floodplains, not away from them. Both things are true — and neither one alone tells you whether we're actually safer.</p>
+  <div class="stat-row">
+    <div class="stat"><div class="num">−65%</div><div class="lbl">decline in per-capita weather deaths, 1940s → 2010s</div></div>
+    <div class="stat"><div class="num">86 yrs</div><div class="lbl">of NOAA fatality records analyzed</div></div>
+    <div class="stat"><div class="num">1 metric</div><div class="lbl">problem: "death rate" isn't one number</div></div>
+  </div>
+</div>
+</div>
+
+<section id="raw">
+<div class="wrap">
+  <div class="section-head">
+    <span class="num-label">01 — The raw numbers</span>
+    <h2>Deaths are down. Population is way up.</h2>
+    <p>Using NOAA's 81-Year Hazard Statistics, combined annual average fatalities from tornadoes, floods, and hurricanes hover in the low 200s across most decades — with no clear long-run upward trend. But that number alone hides the more important story.</p>
+  </div>
+  <div class="chart-panels">
+    <div class="panel">
+      <h3>Raw annual average deaths</h3>
+      <div class="note">Tornado + flood + hurricane, by decade</div>
+      <canvas id="rawChart"></canvas>
+    </div>
+    <div class="panel">
+      <h3>Deaths per 100,000 people</h3>
+      <div class="note">Same deaths, adjusted for US population</div>
+      <canvas id="capitaChart"></canvas>
+    </div>
+  </div>
+  <div class="callout">
+    <p>The denominator matters. Raw deaths in the 2000s (236/yr, driven by Katrina) look similar to the 1940s (262/yr). But the US population nearly tripled in that span — so the <em>per-capita</em> risk of dying from these hazards fell by roughly two-thirds. Adaptation — building codes, warning systems, evacuation infrastructure — is doing real work, even where the raw death toll looks flat.</p>
+  </div>
+</div>
+</section>
+
+<section id="migration">
+<div class="wrap">
+  <div class="section-head">
+    <span class="num-label">02 — Where people are moving</span>
+    <h2>Flooding: the hazard I chose</h2>
+    <p>Flood fatalities specifically show more volatility than tornado or hurricane deaths — spiking in years with major inland flooding (1972's Hurricane Agnes, 1993's Midwest floods, 2024's Hurricane Helene) rather than trending smoothly. So a natural next question: are Americans moving toward flood risk, or away from it?</p>
+  </div>
+  <div class="two-col">
+    <div>
+      <div class="panel" style="margin-bottom:24px;">
+        <h3>Average flood fatalities by decade</h3>
+        <div class="note">NOAA 81-Year Hazard Statistics, 1940–2025</div>
+        <canvas id="floodChart"></canvas>
+      </div>
+      <div class="migration-diagram">
+        <div class="mig-row">
+          <div class="mig-label">Block-level floodplain exposure</div>
+          <div class="mig-track"><div class="mig-fill" style="width:78%"></div></div>
+        </div>
+        <div class="mig-row">
+          <div class="mig-label">Parcel-level (property) exposure</div>
+          <div class="mig-track"><div class="mig-fill" style="width:38%"></div></div>
+        </div>
+        <p class="mig-caption">Illustrative, based on Census Bureau CES working paper CES-WP-26-37 (migration flows into/out of floodplains, 2000–2020). Broad, census-block-level measures show migration toward floodplains rising more sharply than the narrower, parcel-level measure of properties actually inside mapped flood zones — the gap matters, and it's a caution against reading "moved to a floodplain area" as "moved onto a flood-exposed property."</p>
+      </div>
+    </div>
+    <aside>
+      <h3>Why this isn't a contradiction</h3>
+      <p>Declining death rates and rising floodplain migration can both be true at once. If protective infrastructure, warning systems, and insurance markets have genuinely reduced the danger of living near water, then moving toward a floodplain is a rational response to falling risk — not a sign people are ignoring it. The data doesn't resolve which force is bigger; it just tells you both are moving.</p>
+    </aside>
+  </div>
+</div>
+</section>
+
+<section id="burke">
+<div class="wrap">
+  <div class="section-head">
+    <span class="num-label">03 — A measurement caution</span>
+    <h2>Not every "death count" measures the same thing</h2>
+    <p>A recent NBER paper (Burke et al., 2025) estimates that ambient temperature is responsible for <strong>5–12% of all deaths</strong> across a 30-country sample — hundreds of thousands of deaths a year in the US and EU alone. That's a far larger number than any NOAA hazard category, including flooding.</p>
+  </div>
+  <div class="callout">
+    <p>These numbers aren't in tension with the flood chart above — they're not measuring the same thing. NOAA's flood fatalities are deaths <em>directly and immediately</em> caused by a named event, typically drawn from official reports. Burke's temperature-attributable mortality is a statistical estimate of <em>excess</em> deaths — largely cardiovascular and respiratory — linked to temperature deviation across an entire population over a full year, most of which never get coded as a "weather death" at all. The lesson generalizes: before comparing any two mortality statistics in this space, ask what, exactly, each one is counting.</p>
+  </div>
+</div>
+</section>
+
+<section id="economics">
+<div class="wrap">
+  <div class="section-head">
+    <span class="num-label">04 — The economics</span>
+    <h2>Adaptation isn't free — someone pays, and someone decides</h2>
+    <p>Falling per-capita death rates look like a straightforward success. But every input to that success has a cost and a distribution question behind it.</p>
+  </div>
+  <p>Levees, elevated foundations, flood insurance mandates, and relocation of aging infrastructure to higher ground all cost money — and that money is a tradeoff against other public spending, not a free good. Nordhaus-style estimates of coastal capital relocation suggest the annual cost of gradually moving vulnerable structures to safer ground, spread across a plausible depreciation horizon, is a real but manageable share of GDP — small in aggregate, but not small to the households and municipalities who bear it directly.</p>
+  <p>Floodplain migration raises the same question from the other direction: if moving toward water is individually rational because protection has improved, who bears the residual risk when protection fails? Subsidized flood insurance, disaster relief, and infrastructure spending effectively socialize part of that risk — which changes the incentive to move there in the first place. That's a classic externality problem, not just a safety story.</p>
+</div>
+</section>
+
+<section class="holdon" id="holdon">
+<div class="wrap">
+  <div class="section-head">
+    <span class="num-label">05 — Oh, wait</span>
+    <h2>What this data can't tell you</h2>
+    <p>A falling per-capita death rate is easy to read as "we've solved flood risk." Hold on: falling deaths could reflect real adaptation — or it could reflect that the worst-exposed structures simply haven't been tested yet by a large enough event. The 2020s figure above (123.5 deaths/year average) is already trending back toward 1960s–70s levels after decades of decline, built on just six years of data. One or two catastrophic seasons could reverse the story this page is telling. Falling death rates measure what has happened, not what protection actually exists against what hasn't happened yet.</p>
+</div>
+</section>
+
+<footer>
+<div class="wrap">
+  <h3>Sources</h3>
+  <ul>
+    <li>NOAA National Weather Service, <a href="https://www.weather.gov/media/hazstat/81year_2025.pdf" target="_blank" rel="noopener">81-Year Hazard Statistics (1940–2025)</a></li>
+    <li>U.S. Census Bureau, <a href="https://www2.census.gov/programs-surveys/popest/tables/1900-1980/national/totals/popclockest.txt" target="_blank" rel="noopener">Historical national population estimates</a></li>
+    <li>U.S. Census Bureau CES, <a href="https://www2.census.gov/library/working-papers/2026/adrm/ces/CES-WP-26-37.pdf" target="_blank" rel="noopener">Migration flows between floodplain and non-floodplain areas, 2000–2020 (Working Paper CES-WP-26-37)</a></li>
+    <li>Burke, M. et al. (2025), <a href="https://www.nber.org/papers/w34313" target="_blank" rel="noopener">"Understanding and Addressing Temperature Impacts on Mortality," NBER Working Paper 34313</a></li>
+  </ul>
+  <div class="byline">Econ 238 · Fall 2026 · Homework 4 — Storm Damages &amp; Adaptation<br>Full poster PDF available alongside this page in the project repository.</div>
+</div>
+</footer>
+
+<script>
+const decades=['1940s','1950s','1960s','1970s','1980s','1990s','2000s','2010s','2020s*'];
+const raw=[262,308,282,302,174,171,236,195,230];
+const capita=[0.194,0.193,0.152,0.144,0.076,0.067,0.083,0.063,0.069];
+const flood=[62,79,130,182,110,99,65,99,124];
+const ink='#1B3A4B', amber='#C97B2E', grid='#E2E8E9';
+function baseOpts(yLabel){return{
+  responsive:true,maintainAspectRatio:false,
+  plugins:{legend:{display:false}},
+  scales:{
+    x:{grid:{display:false},ticks:{color:ink,font:{size:11}}},
+    y:{grid:{color:grid},ticks:{color:ink,font:{size:11}},title:{display:true,text:yLabel,color:'#3B5A66',font:{size:11}}}
+  }
+};}
+new Chart(document.getElementById('rawChart'),{type:'bar',data:{labels:decades,datasets:[{data:raw,backgroundColor:ink}]},options:baseOpts('deaths/year')});
+new Chart(document.getElementById('capitaChart'),{type:'bar',data:{labels:decades,datasets:[{data:capita,backgroundColor:amber}]},options:baseOpts('deaths per 100,000')});
+new Chart(document.getElementById('floodChart'),{type:'bar',data:{labels:decades,datasets:[{data:flood,backgroundColor:'#4F7C82'}]},options:baseOpts('flood deaths/year')});
+</script>
+</body>
+</html>
