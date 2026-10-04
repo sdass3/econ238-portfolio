@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>How Much Does a Longer Shower Actually Cost?</title>
+<style>
+:root{box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px);--bg:#fafaf7;--fg:#1d2330;--mu:#5d6675;--card:#fff;--bd:#dfe2e8;--w:#2f8fdb;--h:#e0702f}
+@media(prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#14171d;--fg:#e9ecf2;--mu:#9aa3b2;--card:#1d222b;--bd:#323946;--w:#5fb0f5;--h:#f09050}}
+:root[data-theme="dark"]{--bg:#14171d;--fg:#e9ecf2;--mu:#9aa3b2;--card:#1d222b;--bd:#323946;--w:#5fb0f5;--h:#f09050}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+body{margin:0;background:var(--bg);color:var(--fg);font:16px/1.5 Georgia,'Times New Roman',serif}
+main{max-width:820px;margin:0 auto;padding:20px 16px 48px}
+h1{font-size:1.9rem;line-height:1.2;margin:.2em 0}h2{font-size:1.15rem;margin:1.6em 0 .4em}
+.sub,.note{color:var(--mu);font-size:.9rem}
+.card{background:var(--card);border:1px solid var(--bd);border-radius:10px;padding:14px;margin:12px 0}
+.ctl{display:flex;gap:14px;flex-wrap:wrap;font-size:.9rem}.ctl label{display:flex;flex-direction:column;gap:2px;color:var(--mu)}
+select{font:inherit;font-size:.9rem;padding:4px;background:var(--bg);color:var(--fg);border:1px solid var(--bd);border-radius:6px}
+.row{display:grid;grid-template-columns:70px 1fr;gap:8px;align-items:center;margin:9px 0;font-size:.9rem}
+.bar{height:26px;border-radius:4px;display:flex;min-width:2px;overflow:hidden}
+.bar i{display:block;height:100%}.bw{background:var(--w)}.bh{background:var(--h)}
+.val{font-size:.8rem;color:var(--mu);margin-top:2px}
+.big{font-size:1.25rem;margin:.4em 0}.big b{color:var(--h)}
+.lg{font-size:.8rem;color:var(--mu)}.lg s{display:inline-block;width:10px;height:10px;margin:0 3px 0 8px;text-decoration:none}
+.w{overflow-x:auto}table{border-collapse:collapse;width:100%;font-size:.85rem}
+th,td{padding:5px 8px;border-bottom:1px solid var(--bd);text-align:right;white-space:nowrap}th:first-child,td:first-child{text-align:left}
+a{color:var(--w)}pre{padding:10px;white-space:pre-wrap;font:.82rem ui-monospace,Menlo,monospace;background:var(--bg);border:1px solid var(--bd);border-radius:6px}
+</style></head><body><main>
+<p class="sub">SHOW ME exhibit · Environmental Economics</p>
+<h1>How much does a longer shower actually cost?</h1>
+<p>A 20-minute shower is not "bad". It is four times a 5-minute shower in water, heating energy and money, because every minute runs the same flow. This page calculates what that means in gallons, kWh and dollars, and shows what changes when the showerhead or water heater changes.</p>
+
+<p class="note">Base case: 2.5 gpm standard showerhead, electric resistance water heater, water heated from 50°F to 120°F (a 70°F rise), U.S. average prices.</p>
+<div class="card"><div style="font-weight:bold">Water used per shower</div><div id="gal"></div></div>
+<div class="card"><div style="font-weight:bold">Cost per shower</div>
+<div class="lg"><s style="background:var(--w)"></s>water + sewer<s style="background:var(--h)"></s>water heating</div><div id="cost"></div></div>
+<div class="card"><div class="big" id="sent"></div>
+<div class="big" id="hh"></div><div class="note">Household case: one person showers 20 minutes instead of 5 minutes every day (15 extra minutes × 365 days), in the base case.</div></div>
+
+<h2>Shorter shower or lower-flow showerhead?</h2>
+<div class="card w"><table id="mx"></table></div>
+<p class="note">Cost per shower with an electric heater. Cutting flow from 2.5 to 2.0 gpm saves 20% on every shower, the same as shaving 1 minute off a 5-minute shower or 4 minutes off a 20-minute one. For a long shower, the shower length changes the answer far more than the showerhead.</p>
+
+<h2>Notes and how AI was used</h2>
+<ul class="note">
+<li><b>Not Rochester data.</b> Prices are U.S. averages (EPA 2024 water + wastewater; EIA electricity for July 2026). A Rochester-area utility tariff would be a better local input.</li>
+<li><b>Heating is probably overstated.</b> The model heats every gallon by 70°F, but real showers mix hot and cold water to roughly 105°F, which would cut heating energy by about 21%.</li>
+<li><b>Real showers are shorter.</b> A secondary source (The Shower Head Store) reports an average of 8.2 minutes at 2.1 gpm, about 17 gallons; I did not verify it against a primary study.</li>
+<li>Water price is an average. Many utilities have fixed base charges and tiered rates, so the true cost of one shower can differ.</li>
+<li><b>AI use:</b> AI was used for the formulas, calculations and page design.</li>
+</ul>
+<h2>Sources</h2>
+<ol class="note">
+<li>U.S. EPA WaterSense, Showerheads (2.5 gpm standard, 2.0 gpm WaterSense, showers 17% of indoor use). <a href="https://www.epa.gov/watersense/showerheads">epa.gov/watersense/showerheads</a></li>
+<li>U.S. EPA WaterSense, "Data and Information Used by WaterSense" (2024 residential water + wastewater, $16.83 per 1,000 gal). Cite the exact page you used.</li>
+<li>Efficiency Maine, Water heating cost comparison (583 BTU/gal). <a href="https://www.efficiencymaine.com/at-home/water-heating-cost-comparison/">efficiencymaine.com</a></li>
+<li>U.S. EIA, Electric Power Monthly (residential electricity, 18.31¢/kWh, July 2026). <a href="https://www.eia.gov/electricity/monthly/">eia.gov/electricity/monthly</a></li>
+</ol>
+
+<h2>Formulas</h2>
+<pre>Water (gal) = minutes × flow (gpm)
+Water cost  = gal × $16.83 ÷ 1,000
+Heating kWh = gal × 583 BTU ÷ 3,412 (0.171 kWh/gal); cost = kWh × $0.1831</pre>
+</main>
+<script>
+const $=i=>document.getElementById(i),W=16.83,EL=.1831,GS=2.32,MIN=[5,10,20];
+function m(min,f,h,d){const gal=min*f,wc=gal*W/1000,btu=gal*583*d/70;let e,u,hc;
+ if(h=='g'){e=btu/.62/1e5;u='therms';hc=e*GS}else{e=btu/3412/(h=='p'?3:1);u='kWh';hc=e*EL}
+ return{gal,wc,hc,e,u,t:wc+hc}}
+function draw(){const f=2.5,h='e',d=70;
+ $('gal').innerHTML=MIN.map(n=>{const r=m(n,f,h,d);return `<div class="row"><div>🚿 ${n} min</div><div><div class="bar"><i class="bw" style="width:${r.gal/50*100}%"></i></div><div class="val">${r.gal.toFixed(1)} gallons</div></div></div>`}).join('');
+ $('cost').innerHTML=MIN.map(n=>{const r=m(n,f,h,d);return `<div class="row"><div>${n} min</div><div><div class="bar"><i class="bw" style="width:${r.wc/2.5*100}%"></i><i class="bh" style="width:${r.hc/2.5*100}%"></i></div><div class="val">$${r.t.toFixed(2)} · water $${r.wc.toFixed(2)} + heat $${r.hc.toFixed(2)} · ${r.e.toFixed(r.u=='kWh'?2:3)} ${r.u}</div></div></div>`}).join('');
+ const a=m(5,f,h,d),b=m(20,f,h,d),x=b.t-a.t;
+ $('sent').innerHTML=`A 20-minute shower uses <b>${(b.gal/a.gal).toFixed(0)}×</b> the water of a 5-minute shower and costs about <b>$${x.toFixed(2)} more</b>.`;
+ const g=15*f*365,en=(b.e-a.e)*365;
+ $('hh').innerHTML=`Extra 15 min a day: <b>${Math.round(g).toLocaleString()}</b> gallons, <b>${Math.round(en).toLocaleString()}</b> ${a.u}, <b>$${Math.round(x*365).toLocaleString()}</b> per year.`;
+ $('mx').innerHTML='<tr><th>Flow</th>'+MIN.map(n=>`<th>${n} min</th>`).join('')+'</tr>'+[2.5,2,1.5].map(q=>`<tr><td>${q} gpm</td>`+MIN.map(n=>`<td>$${m(n,q,h,d).t.toFixed(2)} (${n*q} gal)</td>`).join('')+'</tr>').join('');}
+draw();
+</script></body></html>
