@@ -1,25 +1,104 @@
-<!DOCTYPE html>
-<html>
+<!doctype html>
+<html lang="en">
 <head>
-    <title>ECON 238 Portfolio</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Turn Over a New Leaf | A Leaf-Composting Proposal</title>
+<style>
+  :root {
+    --forest: #28452d;
+    --moss: #49633c;
+    --cream: #f6f2e9;
+    --paper: #fffdf8;
+    --rust: #a65332;
+    --ink: #263128;
+    --muted: #5d675e;
+    --line: #d9dfd2;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0; background: var(--cream); color: var(--ink);
+    font-family: Arial, Helvetica, sans-serif; line-height: 1.6;
+  }
+  header {
+    background: var(--forest); color: #fffdf8; padding: 58px 22px 48px;
+    text-align: center; border-bottom: 8px solid #c58a4b;
+  }
+  .eyebrow { text-transform: uppercase; letter-spacing: .14em; font-size: .78rem; font-weight: 700; }
+  h1 { font-family: Georgia, 'Times New Roman', serif; font-size: clamp(2.4rem, 7vw, 4.7rem); line-height: 1.04; margin: 15px auto; max-width: 850px; }
+  header p { max-width: 700px; margin: 16px auto 0; font-size: 1.1rem; color: #f2eee2; }
+  main { width: min(900px, calc(100% - 32px)); margin: 30px auto 55px; }
+  .intro, section {
+    background: var(--paper); border: 1px solid var(--line); border-radius: 15px;
+    padding: 25px clamp(20px, 4vw, 36px); margin: 18px 0;
+    box-shadow: 0 4px 16px rgba(40,69,45,.04);
+  }
+  h2 { color: var(--forest); font-family: Georgia, 'Times New Roman', serif; margin: 0 0 12px; font-size: 1.55rem; }
+  h3 { color: var(--moss); margin-bottom: 6px; }
+  .label { color: var(--rust); font-size: .76rem; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; }
+  .ballot { border: 2px solid var(--moss); background: #f0f4eb; }
+  .question { font-size: 1.08rem; }
+  .two { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
+  .two section { margin: 0; }
+  .note { color: var(--muted); font-size: .92rem; }
+  a { color: #315c3a; text-underline-offset: 3px; overflow-wrap: anywhere; }
+  ul { padding-left: 1.25rem; }
+  li { margin: .45rem 0; }
+  footer { text-align: center; padding: 25px 18px 38px; color: var(--muted); font-size: .88rem; }
+  @media (max-width: 650px) { .two { grid-template-columns: 1fr; } header { padding-top: 42px; } }
+</style>
 </head>
-
 <body>
-    <h1>ECON 238 Portfolio</h1>
+<header>
+  <div class="eyebrow">A local environmental tradeoff</div>
+  <h1>Turn Over a New Leaf</h1>
+  <p>What if fall cleanup could create something useful for our parks, gardens, and neighborhoods?</p>
+</header>
 
-    <h2>Week One: Data Centers</h2>
+<main>
+  <div class="intro">
+    <p class="label">The idea</p>
+    <p>Each autumn, fallen leaves need to be collected and managed. Instead of treating them only as waste, a community could collect leaves separately, compost them, and return the finished material to local landscaping. This proposal starts with a limited pilot so residents can see what it costs and how much material it diverts before deciding whether to expand it.</p>
+  </div>
 
-    <p>
-        This project examines the economic and environmental impacts
-        of large data centers using concepts such as scarcity,
-        opportunity cost, and externalities.
-    </p>
+  <section class="ballot">
+    <p class="label">The proposition</p>
+    <h2>Establish a One-Season Municipal Leaf-Composting Pilot</h2>
+    <p class="label">The ballot question</p>
+    <p class="question">Shall a one-fall-season leaf-composting pilot be established using an existing public site or approved local composting facility; collect leaves at designated drop-off points or existing yard-waste collection events; track the tonnage collected and full program costs; use finished compost in public landscaping where appropriate; and publish results before deciding whether to continue the program?</p>
+  </section>
 
-    <h2>My Visual Explainer</h2>
+  <section>
+    <h2>What’s the deal?</h2>
+    <p>The environmental benefit is keeping leaves in a useful local cycle: compost can improve soil structure, help soil retain water, and reduce erosion. Composting organic materials can also reduce the amount of waste sent to landfills. In exchange, the town would need to coordinate collection, transport, site management, and quality control. Residents might need to bring leaves to designated drop-off points or follow separate collection rules. Residents and public spaces could benefit from locally produced compost; taxpayers and public works staff would bear the program’s costs. The proposal is a one-season pilot, not a promise of immediate town-wide curbside pickup. Actual cost and tonnage depend on the town’s existing equipment, facility access, participation, and disposal arrangements, so those figures should be measured and published rather than guessed.</p>
+  </section>
 
-    <img src="White Purple Illustrative Things To Avoid Poster..." 
-         alt="ECON 238 visual explainer" 
-         width="800">
+  <div class="two">
+    <section>
+      <h2>The best case for YES</h2>
+      <p>Leaves are a predictable seasonal resource, not just a cleanup problem. Composting them can turn material that might otherwise be discarded into a useful soil amendment for parks and other public landscaping. The U.S. Environmental Protection Agency identifies yard trimmings as compostable organic material and notes that compost can improve soil quality, increase water retention, and help reduce erosion. A small pilot lets the town test the idea with existing sites or equipment before making a larger commitment. Publishing the total cost and amount collected would give residents evidence to judge whether expansion makes sense.</p>
+    </section>
+    <section>
+      <h2>The best case for NO</h2>
+      <p>A separate program is not automatically cheaper or greener. Collecting leaves requires staff time, vehicles, fuel, space, and careful management. If leaves must be hauled a long distance, transport can reduce the environmental advantage. A town may already mulch leaves on lawns, collect yard waste, or contract with a facility, making a new program duplicative. Residents may also find drop-off rules inconvenient. Without local data on current disposal costs, collection volumes, and available composting capacity, the town cannot assume the pilot will save money. The same funds might produce greater benefits if spent on another environmental priority.</p>
+    </section>
+  </div>
 
+  <section>
+    <h2>Why isn’t this already happening?</h2>
+    <p>Some communities already compost yard waste, so the question is whether this particular town has the right incentives and infrastructure. The current system may be easier to administer because residents are used to it, collection contracts may already be in place, and the benefits of better soil are spread across the community while the costs fall on public works budgets. Starting a separate program also requires coordination, a suitable site, and reliable demand for the finished compost. If no one measures the current amount of leaves or compares disposal and processing costs, it can be difficult to show whether a change is worthwhile. A time-limited pilot with transparent reporting helps address that information gap.</p>
+  </section>
+
+  <section>
+    <h2>Sources and further reading</h2>
+    <ul>
+      <li><a href="https://www.epa.gov/sustainable-management-food/composting" target="_blank" rel="noopener noreferrer">U.S. Environmental Protection Agency — Composting</a>: explains composting, organic waste diversion, and environmental benefits.</li>
+      <li><a href="https://www.epa.gov/sustainable-management-food/community-composting" target="_blank" rel="noopener noreferrer">U.S. Environmental Protection Agency — Community Composting</a>: discusses local benefits of keeping organic materials in the community.</li>
+      <li><a href="https://dec.ny.gov/environmental-protection/recycling-composting/organic-materials-management/home-composting" target="_blank" rel="noopener noreferrer">New York State Department of Environmental Conservation — Home Composting</a>: describes compost benefits and notes that some municipalities operate facilities for leaves and other yard waste.</li>
+    </ul>
+    <p class="note">This proposal does not claim a specific dollar saving or emissions reduction. Those figures require local collection, hauling, and disposal data.</p>
+  </section>
+</main>
+<footer>Turn Over a New Leaf · A proposed pilot, to be judged by its results.</footer>
 </body>
 </html>
